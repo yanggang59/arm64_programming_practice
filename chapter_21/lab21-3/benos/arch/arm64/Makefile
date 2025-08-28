@@ -100,9 +100,9 @@ endif
 QEMU_FLAGS  += -nographic
 
 run:
-	qemu-system-aarch64 $(QEMU_FLAGS) \
+	${QEMU_PREFIX}qemu-system-aarch64 $(QEMU_FLAGS) \
 	-kernel arch/arm64/boot/benos.bin
 
 debug:
-	qemu-system-aarch64 $(QEMU_FLAGS) \
+	${QEMU_PREFIX}qemu-system-aarch64 $(QEMU_FLAGS) \
 	-kernel arch/arm64/boot/benos.bin -S -s
