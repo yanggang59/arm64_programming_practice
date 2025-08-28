@@ -90,7 +90,7 @@ QEMU_FLAGS  += -machine raspi3
 endif
 
 ifeq ($(CONFIG_BOARD_PI4B), y)
-QEMU_FLAGS  += -machine raspi4
+QEMU_FLAGS  += -machine raspi4b
 endif
 
 ifeq ($(CONFIG_PI_MINI_UART),y)
