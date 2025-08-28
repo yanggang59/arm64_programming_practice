@@ -1,5 +1,5 @@
 ARMGNU ?= aarch64-linux-gnu
-
+QEMU_PREFIX ?= /home/thomas/workspace/qemu-9.0.0/install/bin/
 board ?= rpi4
 
 ifeq ($(board), rpi3)
@@ -7,7 +7,7 @@ COPS += -DCONFIG_BOARD_PI3B
 QEMU_FLAGS  += -machine raspi3
 else ifeq ($(board), rpi4)
 COPS += -DCONFIG_BOARD_PI4B
-QEMU_FLAGS  += -machine raspi4
+QEMU_FLAGS  += -machine raspi4b
 endif
 
 COPS += -g -Wall -nostdlib -Iinclude -mgeneral-regs-only
@@ -44,6 +44,6 @@ benos.bin: $(SRC_DIR)/linker.ld $(OBJ_FILES)
 QEMU_FLAGS  += -nographic
 
 run:
-	qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin
+	${QEMU_PREFIX}qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin
 debug:
-	qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin -S -s
+	${QEMU_PREFIX}qemu-system-aarch64 $(QEMU_FLAGS) -kernel benos.bin -S -s
